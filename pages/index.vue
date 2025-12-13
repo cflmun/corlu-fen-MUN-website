@@ -3,29 +3,28 @@
     <section class="hero">
       <div class="overlay"></div>
       <div class="hero-content">
-        <h4 class="date-badge">12 - 14 MAYIS 2025</h4>
-        <h1 class="main-title">ÇFLMUN'25</h1>
-        <p class="motto">"Diplomasi Işığında Geleceği Şekillendir"</p>
+        <h4 class="date-badge">1 - 3 MAY 2026</h4>
+        <h1 class="main-title">CFLMUN'26</h1>
+        <p class="motto">"Shaping the Future in the Light of Diplomacy."</p>
         
         <div class="cta-group">
-          <NuxtLink to="/apply" class="btn btn-primary">Şimdi Başvur</NuxtLink>
-          <NuxtLink to="/committees" class="btn btn-outline">Komiteler</NuxtLink>
+          <NuxtLink to="/apply" class="btn btn-primary">Apply Now!</NuxtLink>
+          <NuxtLink to="/committees" class="btn btn-outline">Committees</NuxtLink>
         </div>
       </div>
     </section>
 
     <section class="welcome container">
       <div class="welcome-text">
-        <h2>HOŞ GELDİNİZ</h2>
+        <h2>WELCOME</h2>
         <div class="red-line"></div>
         <p>
-          Çorlu Fen Lisesi Model Birleşmiş Milletler Konferansı'nın 2025 edisyonuna hoş geldiniz.
-          Dünya sorunlarına genç bakış açılarıyla çözüm aradığımız, diplomasinin kalbinin attığı
-          bu organizasyonda sizleri aramızda görmekten mutluluk duyarız.
+          Welcome to the 2025 edition of the Çorlu Science High School Model United Nations Conference.
+We would be delighted to see you at this event, where we seek solutions to global problems from young perspectives and where the heart of diplomacy beats.
         </p>
         <div class="sg-sign">
           <strong>Ad Soyad</strong>
-          <span>Genel Sekreter</span>
+          <span>Secretary General</span>
         </div>
       </div>
     </section>
