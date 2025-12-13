@@ -1,69 +1,57 @@
 <template>
-  <div class="schedule-page container">
-    <h1>Konferans Takvimi</h1>
-    
-    <div class="tabs">
-      <button 
-        v-for="(day, index) in days" 
-        :key="index" 
-        :class="{ active: activeTab === index }"
-        @click="activeTab = index"
-      >
-        {{ day.title }}
-      </button>
+  <div class="page-wrapper">
+    <div class="page-header">
+      <h1>TAKVİM</h1>
     </div>
 
-    <div class="timeline">
-      <div v-for="(event, idx) in days[activeTab].events" :key="idx" class="event-item">
-        <div class="time">{{ event.time }}</div>
-        <div class="details">
-          <h3>{{ event.name }}</h3>
-          <span class="location-badge">{{ event.location }}</span>
+    <div class="schedule-container">
+      <div class="timeline">
+        <div class="day-header">1. GÜN (Cuma)</div>
+        <div class="event-row">
+          <div class="time">16:00</div>
+          <div class="event-details">
+            <h3>Kayıt & Karşılama</h3>
+            <span>Ana Lobi</span>
+          </div>
+        </div>
+        <div class="event-row">
+          <div class="time">17:30</div>
+          <div class="event-details">
+            <h3>Açılış Seremonisi</h3>
+            <span>Konferans Salonu</span>
+          </div>
+        </div>
+
+        <div class="day-header" style="margin-top: 40px;">2. GÜN (Cumartesi)</div>
+        <div class="event-row">
+          <div class="time">09:00</div>
+          <div class="event-details">
+            <h3>Oturum 2</h3>
+            <span>Komite Odaları</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-
-const activeTab = ref(0);
-const days = [
-  {
-    title: '1. Gün (Cuma)',
-    events: [
-      { time: '08:30 - 09:30', name: 'Kayıt & Karşılama', location: 'Lobi' },
-      { time: '09:30 - 11:00', name: 'Açılış Seremonisi', location: 'Konferans Salonu' },
-      { time: '11:00 - 11:30', name: 'Coffee Break', location: 'Kafeterya' },
-      { time: '11:30 - 13:00', name: 'Oturum 1', location: 'Komite Odaları' },
-    ]
-  },
-  { title: '2. Gün (C.tesi)', events: [{ time: '09:00', name: 'Oturum 4', location: 'Sınıflar' }] }, // Örnek
-  { title: '3. Gün (Pazar)', events: [{ time: '16:00', name: 'Kapanış', location: 'Konferans Salonu' }] } // Örnek
-];
-</script>
-
 <style scoped>
-.container { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
-.tabs { display: flex; justify-content: center; margin-bottom: 2rem; gap: 1rem; }
-.tabs button {
-  padding: 10px 20px;
-  background: transparent;
-  border: 2px solid #333;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
-}
-.tabs button.active { background: #333; color: white; }
+.page-wrapper { padding-top: 100px; min-height: 80vh; }
+.page-header { text-align: center; margin-bottom: 50px; }
 
-.event-item {
-  display: flex;
-  border-bottom: 1px solid #eee;
-  padding: 1.5rem 0;
-  align-items: center;
+.schedule-container { max-width: 800px; margin: 0 auto; padding: 20px; }
+.day-header { 
+  font-size: 1.5rem; color: #b91c1c; border-bottom: 1px solid #333; 
+  padding-bottom: 10px; margin-bottom: 20px; font-weight: bold; 
 }
-.time { font-weight: bold; width: 150px; color: #b91c1c; }
-.details h3 { margin: 0 0 5px 0; }
-.location-badge { font-size: 0.8rem; background: #f3f4f6; padding: 2px 8px; border-radius: 4px; color: #666; }
+
+.event-row { 
+  display: flex; align-items: center; padding: 20px 0; 
+  border-bottom: 1px solid #1a1a1a; 
+}
+.event-row:last-child { border-bottom: none; }
+
+.time { width: 120px; font-size: 1.2rem; font-weight: bold; color: white; }
+.event-details h3 { margin: 0; font-size: 1.1rem; color: #ddd; }
+.event-details span { color: #666; font-size: 0.9rem; }
 </style>

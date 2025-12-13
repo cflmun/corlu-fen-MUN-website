@@ -1,55 +1,56 @@
 <template>
-  <div class="apply-page container">
-    <div class="header">
-      <h1>ÇFLMUN'25 Başvuruları</h1>
-      <p>Lütfen başvuru yapmadan önce komite bilgilerini inceleyiniz.</p>
-    </div>
+  <div class="apply-page">
+    <div class="content">
+      <h1>BAŞVURULAR</h1>
+      <p>ÇFLMUN'25 ailesinin bir parçası ol.</p>
 
-    <div class="apply-cards">
-      <div class="apply-card">
-        <h2>Bireysel Delege</h2>
-        <p>Tek başına katılmak isteyen delegeler için.</p>
-        <a href="https://forms.google.com/..." target="_blank" class="btn">Başvur</a>
-      </div>
+      <div class="cards-wrapper">
+        <a href="https://forms.google.com/..." target="_blank" class="apply-card">
+          <h2>Bireysel Delege</h2>
+          <p>Bağımsız katılım</p>
+          <span class="arrow">→</span>
+        </a>
 
-      <div class="apply-card dark">
-        <h2>Delegasyon</h2>
-        <p>Okul veya kulüp olarak (en az 5 kişi) katılmak için.</p>
-        <a href="https://forms.google.com/..." target="_blank" class="btn btn-outline">Başvur</a>
-      </div>
-      
-       <div class="apply-card">
-        <h2>Akademi & Org</h2>
-        <p>Organizasyon veya Akademi ekibinde yer almak için.</p>
-        <a href="https://forms.google.com/..." target="_blank" class="btn">Başvur</a>
+        <a href="https://forms.google.com/..." target="_blank" class="apply-card highlight">
+          <h2>Delegasyon</h2>
+          <p>En az 5 kişilik gruplar</p>
+          <span class="arrow">→</span>
+        </a>
+
+        <a href="https://forms.google.com/..." target="_blank" class="apply-card">
+          <h2>Ekip Üyesi</h2>
+          <p>Akademi & Organizasyon</p>
+          <span class="arrow">→</span>
+        </a>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.container { padding: 4rem 2rem; text-align: center; }
-.header { margin-bottom: 3rem; }
-.apply-cards { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+.apply-page {
+  height: 100vh; padding-top: 60px;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle at center, #1a1a1a 0%, #000 80%);
+  text-align: center;
+}
+h1 { font-size: 3rem; margin-bottom: 10px; color: white; }
+p { color: #888; margin-bottom: 40px; }
+
+.cards-wrapper { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; }
+
 .apply-card {
-  background: white;
-  border: 1px solid #e5e7eb;
-  padding: 2rem;
-  border-radius: 12px;
-  width: 300px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  transition: 0.3s;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: block; width: 280px; padding: 40px 20px;
+  background: #111; border: 1px solid #333; border-radius: 12px;
+  text-decoration: none; color: white; transition: 0.3s;
 }
-.apply-card.dark { background: #1f2937; color: white; border: none; }
-.apply-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
-.apply-card h2 { margin-top: 0; }
-.btn {
-  display: block; width: 100%; padding: 12px; background: #b91c1c; color: white;
-  text-decoration: none; border-radius: 6px; font-weight: bold; margin-top: 1rem;
-}
-.btn-outline { background: transparent; border: 2px solid white; }
-.btn-outline:hover { background: white; color: #1f2937; }
+
+.apply-card:hover { transform: translateY(-10px); border-color: white; }
+.apply-card h2 { margin-top: 0; font-size: 1.4rem; }
+.apply-card p { font-size: 0.9rem; color: #666; margin-bottom: 20px; }
+.arrow { font-size: 2rem; color: #b91c1c; }
+
+.highlight { background: #b91c1c; border-color: #b91c1c; }
+.highlight p { color: #ffcccc; }
+.highlight .arrow { color: white; }
 </style>

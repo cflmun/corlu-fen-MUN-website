@@ -1,45 +1,60 @@
 <template>
-  <div class="team-page container">
-    <section class="section">
+  <div class="page-wrapper">
+    <div class="page-header">
+      <h1>EKİBİMİZ</h1>
+      <p>ÇFLMUN'25 Arkasındaki Güç</p>
+    </div>
+
+    <div class="team-section">
       <h2 class="section-title">Secretariat</h2>
-      <div class="team-grid">
-        <div class="member-card main-role">
-          <!--<img src="@/assets/sg.jpg" alt="Secretary General">-->
-          <h3>Ad Soyad</h3>
+      <div class="team-grid main">
+        <div class="member-card">
+          <div class="avatar"></div>
+          <h3>Öğrenci Adı</h3>
           <span>Secretary General</span>
         </div>
-        <div class="member-card main-role">
-          <!--<img src="/assets/dsg.jpg" alt="Director General">-->
-          <h3>Ad Soyad</h3>
+        <div class="member-card">
+          <div class="avatar"></div>
+          <h3>Öğrenci Adı</h3>
           <span>Director General</span>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2 class="section-title">Academic Team</h2>
-      <div class="team-grid compact">
-        <div v-for="n in 4" :key="n" class="member-card">
-          <div class="placeholder-img"></div>
-          <h4>Üye Adı</h4>
-          <span>Under-Secretary General</span>
+    <div class="team-section">
+      <h2 class="section-title">Organization Team</h2>
+      <div class="team-grid">
+        <div v-for="n in 4" :key="n" class="member-card small">
+          <div class="avatar"></div>
+          <h3>Üye Adı</h3>
+          <span>Head of Org.</span>
         </div>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.container { padding: 4rem 2rem; text-align: center; }
-.section { margin-bottom: 4rem; }
-.section-title { font-size: 2rem; margin-bottom: 2rem; border-bottom: 2px solid #b91c1c; display: inline-block; padding-bottom: 10px; }
-.team-grid { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
-.member-card { text-align: center; width: 250px; }
-.member-card img, .placeholder-img { 
-  width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; 
-  border: 4px solid #f3f4f6; transition: 0.3s; background: #ddd;
+.page-wrapper { padding-top: 100px; text-align: center; padding-bottom: 60px; }
+.section-title { 
+  display: inline-block; border-bottom: 2px solid #b91c1c; 
+  padding-bottom: 10px; margin: 50px 0 30px; color: #fff; letter-spacing: 2px;
 }
-.member-card:hover img { border-color: #b91c1c; }
-.member-card h3 { margin: 0; color: #111; }
-.member-card span { color: #666; font-style: italic; }
+
+.team-grid { 
+  display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; 
+  max-width: 1200px; margin: 0 auto; 
+}
+
+.member-card { width: 250px; }
+.avatar { 
+  width: 180px; height: 180px; background: #222; border-radius: 50%; 
+  margin: 0 auto 20px; transition: 0.3s; border: 3px solid transparent; 
+}
+.member-card:hover .avatar { border-color: #b91c1c; }
+
+h3 { margin: 5px 0; color: white; }
+span { color: #888; font-style: italic; }
+
+.small .avatar { width: 140px; height: 140px; }
 </style>
