@@ -18,7 +18,7 @@
         </a>
 
         <a href="https://forms.google.com/..." target="_blank" class="apply-card">
-          <h2>Team Member</h2>
+          <h2>Chairboard</h2>
           <p>Academy & Organization</p>
           <span class="arrow">→</span>
         </a>

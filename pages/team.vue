@@ -36,20 +36,39 @@
 
 <style scoped>
 .page-wrapper { padding-top: 100px; text-align: center; padding-bottom: 60px; }
-.section-title { 
-  display: inline-block; border-bottom: 2px solid #b91c1c; 
-  padding-bottom: 10px; margin: 50px 0 30px; color: #fff; letter-spacing: 2px;
+/* GÜNCELLENMİŞ BAŞLIK STİLİ */
+.section-title {
+  /* Başlığın kendisini ortalar */
+  margin: 50px auto 30px;
+  color: #fff;
+  letter-spacing: 2px;
+  font-size: 2em; /* Daha belirgin bir font boyutu */
+  padding: 0;
+  border: none; /* Eski alt çizgiyi kaldırır */
+  position: relative;
+  display: block; /* Tüm alanı kaplaması için */
 }
 
-.team-grid { 
-  display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; 
-  max-width: 1200px; margin: 0 auto; 
+/* Başlık altına modern, ortalanmış bir çizgi ekler */
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px; /* Çizgi uzunluğu */
+  height: 3px; /* Çizgi kalınlığı */
+  background-color: #b91c1c; /* Kırmızı renk */
+  margin: 15px auto 0; /* Çizgiyi ortalar ve başlık ile arasını açar */
+  border-radius: 2px;
+}
+
+.team-grid {
+  display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+  max-width: 1200px; margin: 0 auto;
 }
 
 .member-card { width: 250px; }
-.avatar { 
-  width: 180px; height: 180px; background: #222; border-radius: 50%; 
-  margin: 0 auto 20px; transition: 0.3s; border: 3px solid transparent; 
+.avatar {
+  width: 180px; height: 180px; background: #222; border-radius: 50%;
+  margin: 0 auto 20px; transition: 0.3s; border: 3px solid transparent;
 }
 .member-card:hover .avatar { border-color: #b91c1c; }
 

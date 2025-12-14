@@ -25,9 +25,15 @@ const toggle = (i) => {
 }
 
 const faqs = [
-  { q: 'Konferans ücreti ne kadar?', a: 'Bireysel delege ücreti 450 TL, Delegasyon ücreti 400 TL dir.' },
-  { q: 'Dress Code nedir?', a: 'Konferansımızda Western Business Attire (Resmi Kıyafet) zorunludur.' },
-  { q: 'Konaklama sağlanıyor mu?', a: 'Şehir dışından gelen katılımcılarımız için anlaşmalı otellerimiz mevcuttur. Detaylar için DM atabilirsiniz.' },
+  { q: 'What is the conference fee?', a: 'Our delegation application fee is 1700₺. This covers participation in all conference sessions, delegate kits, and event materials.' },
+  { q: 'What is the dress code?', a: 'The dress code is formal business attire. This means delegates are expected to wear suits, blazers, dress shirts, ties, or other professional clothing that reflects a diplomatic environment.' },
+  { q: 'Is accommodation provided?', a: 'Unfortunately, we do not provide accommodation for delegates. However, we can recommend nearby hotels upon request.' },
+  { q: 'Where will the conference take place?', a: 'The conference will be held at Çorlu Borsa İstanbul Science High School, located in Çorlu/Tekirdağ, Türkiye.' },
+  { q: 'What are the conference dates?', a: 'The event will take place from March 1st to May 3rd, 2026.' },
+  { q: 'How can I contact the organizing team?', a: 'You can reach us via email at contact@cflmun.org or through our official Instagram page (@cflmun).' },
+  { q: 'Can individual delegates apply?', a: 'Yes! Independent delegates are welcome to apply, even if they are not part of a school delegation.' },
+  { q: 'Will meals be provided during the conference?', a: 'Yes, lunch and light refreshments will be provided for all participants on each conference day.' },
+
 ]
 </script>
 
