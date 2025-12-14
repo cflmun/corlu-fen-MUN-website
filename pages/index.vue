@@ -6,7 +6,7 @@
         <h4 class="date-badge">1 - 3 MAY 2026</h4>
         <h1 class="main-title">CFLMUN'26</h1>
         <p class="motto">"Shaping the Future in the Light of Diplomacy."</p>
-        
+
         <div class="countdown">
           <div class="time-box">
             <span class="number">{{ formatTime(timeLeft.days) }}</span>
@@ -41,7 +41,8 @@
         <div class="red-line"></div>
         <p>
           Welcome to the 2025 edition of the Çorlu Science High School Model United Nations Conference.
-          We would be delighted to see you at this event, where we seek solutions to global problems from young perspectives and where the heart of diplomacy beats.
+          We would be delighted to see you at this event, where we seek solutions to global problems from young
+          perspectives and where the heart of diplomacy beats.
         </p>
         <div class="sg-sign">
           <strong>Sümeyra Gülsüm Çolak</strong>
@@ -99,8 +100,7 @@ onUnmounted(() => {
 .hero {
   height: 100vh;
   /* Buraya okulun veya şehrin havalı bir fotoğrafını koy */
-  background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80') center/cover fixed;
-  position: relative;
+  background-image: url('/img/okul-anasayfa-foto.png');
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,11 +108,21 @@ onUnmounted(() => {
 }
 
 .overlay {
-  position: absolute; top:0; left:0; width:100%; height:100%;
-  background: rgba(0,0,0,0.6); /* Resmi karartır */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  /* Resmi karartır */
 }
 
-.hero-content { position: relative; z-index: 2; color: white; padding: 20px; }
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  padding: 20px;
+}
 
 .main-title {
   font-size: 5rem;
@@ -123,39 +133,96 @@ onUnmounted(() => {
   -webkit-background-clip: text;
 
   font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
+  font-weight: bold;
 }
 
 /* Işıltı Animasyonu Tanımı */
 /* --- YENİ MUM IŞIĞI ANİMASYONU --- */
 @keyframes candle-flicker {
-  0%   { opacity: 1;    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3); }
-  5%   { opacity: 0.95; text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4); }
-  10%  { opacity: 0.8;  text-shadow: 0 0 8px  rgba(255, 255, 255, 0.4), 0 0 15px rgba(255, 255, 255, 0.2); }
-  15%  { opacity: 1;    text-shadow: 0 0 25px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6); }
-  20%  { opacity: 0.9;  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3); }
-  30%  { opacity: 1;    text-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 35px rgba(255, 255, 255, 0.5); }
-  40%  { opacity: 0.85; text-shadow: 0 0 12px rgba(255, 255, 255, 0.5), 0 0 25px rgba(255, 255, 255, 0.3); }
-  50%  { opacity: 0.95; text-shadow: 0 0 18px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4); }
-  60%  { opacity: 0.9;  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3); }
-  70%  { opacity: 1;    text-shadow: 0 0 30px rgba(255, 255, 255, 0.9), 0 0 50px rgba(255, 255, 255, 0.7); }
-  80%  { opacity: 0.8;  text-shadow: 0 0 8px  rgba(255, 255, 255, 0.4), 0 0 15px rgba(255, 255, 255, 0.2); }
-  90%  { opacity: 0.95; text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 25px rgba(255, 255, 255, 0.4); }
-  100% { opacity: 1;    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3); }
+  0% {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+
+  5% {
+    opacity: 0.95;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+  }
+
+  10% {
+    opacity: 0.8;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 15px rgba(255, 255, 255, 0.2);
+  }
+
+  15% {
+    opacity: 1;
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
+  }
+
+  20% {
+    opacity: 0.9;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+
+  30% {
+    opacity: 1;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 35px rgba(255, 255, 255, 0.5);
+  }
+
+  40% {
+    opacity: 0.85;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.5), 0 0 25px rgba(255, 255, 255, 0.3);
+  }
+
+  50% {
+    opacity: 0.95;
+    text-shadow: 0 0 18px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+  }
+
+  60% {
+    opacity: 0.9;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+
+  70% {
+    opacity: 1;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.9), 0 0 50px rgba(255, 255, 255, 0.7);
+  }
+
+  80% {
+    opacity: 0.8;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 15px rgba(255, 255, 255, 0.2);
+  }
+
+  90% {
+    opacity: 0.95;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 25px rgba(255, 255, 255, 0.4);
+  }
+
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+  }
 }
 
-.date-badge { 
-  letter-spacing: 4px; 
-  font-weight: 800; 
+.date-badge {
+  letter-spacing: 4px;
+  font-weight: 800;
   /* ÖNEMLİ: Bu, rengin global stiller tarafından ezilmesini engeller. */
-  color: #ffffff !important;   
-  font-size: 1.5rem; 
+  color: #ffffff !important;
+  font-size: 1.5rem;
   margin-bottom: 15px;
-  
+
   /* Animasyon kodunuz aynı kalıyor */
   animation: candle-flicker 3s infinite linear;
 }
-.motto { font-size: 1.5rem; color: #ddd; font-weight: 300; margin-bottom: 20px; }
+
+.motto {
+  font-size: 1.5rem;
+  color: #ddd;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
 
 /* --- COUNTDOWN STYLES --- */
 .countdown {
@@ -176,7 +243,7 @@ onUnmounted(() => {
   padding: 10px 15px;
   border-radius: 8px;
   min-width: 80px;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .number {
@@ -184,7 +251,7 @@ onUnmounted(() => {
   font-weight: 700;
   line-height: 1;
   color: #fff;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .label {
@@ -198,37 +265,107 @@ onUnmounted(() => {
 .separator {
   font-size: 2rem;
   font-weight: bold;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   margin-top: 5px;
 }
+
 /* --- END COUNTDOWN STYLES --- */
 
 .btn {
-  display: inline-block; padding: 15px 35px; border-radius: 50px; 
-  text-decoration: none; font-weight: bold; margin: 10px; transition: 0.3s;
+  display: inline-block;
+  padding: 15px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 10px;
+  transition: 0.3s;
 }
-.btn-primary { background: #19213a; color: white; border: 2px solid #19213a; }
-.btn-primary:hover { background: #19213a; border-color: #19213a; }
 
-.btn-outline { background: transparent; color: white; border: 2px solid white; }
-.btn-outline:hover { background: white; color: black; }
+.btn-primary {
+  background: #19213a;
+  color: white;
+  border: 2px solid #19213a;
+}
 
-.welcome { padding: 100px 20px; max-width: 900px; margin: 0 auto; text-align: center; }
-.welcome h2 { font-size: 2.5rem; letter-spacing: 2px; margin-bottom: 10px; font-family: 'Times New Roman', Times, serif;
-    font-weight: bold; }
-.red-line { width: 60px; height: 4px; background: #19213a; margin: 0 auto 30px; }
-.welcome p { font-size: 1.1rem; line-height: 1.8; color: #ccc; }
-.sg-sign { margin-top: 40px; font-style: italic; color: #888; }
-.sg-sign strong { display: block; color: white; font-style: normal; }
+.btn-primary:hover {
+  background: #19213a;
+  border-color: #19213a;
+}
+
+.btn-outline {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-outline:hover {
+  background: white;
+  color: black;
+}
+
+.welcome {
+  padding: 100px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.welcome h2 {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+}
+
+.red-line {
+  width: 60px;
+  height: 4px;
+  background: #19213a;
+  margin: 0 auto 30px;
+}
+
+.welcome p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #ccc;
+}
+
+.sg-sign {
+  margin-top: 40px;
+  font-style: italic;
+  color: #888;
+}
+
+.sg-sign strong {
+  display: block;
+  color: white;
+  font-style: normal;
+}
 
 /* Mobil Uyumluluk */
 @media (max-width: 768px) {
-  .main-title { font-size: 3rem; }
-  
+  .main-title {
+    font-size: 3rem;
+  }
+
   /* Mobilde sayıları biraz küçültelim */
-  .number { font-size: 1.8rem; }
-  .time-box { min-width: 60px; padding: 8px 10px; }
-  .separator { display: none; } /* Mobilde yer kaplamaması için ayraçları gizleyebiliriz */
-  .countdown { gap: 10px; }
+  .number {
+    font-size: 1.8rem;
+  }
+
+  .time-box {
+    min-width: 60px;
+    padding: 8px 10px;
+  }
+
+  .separator {
+    display: none;
+  }
+
+  /* Mobilde yer kaplamaması için ayraçları gizleyebiliriz */
+  .countdown {
+    gap: 10px;
+  }
 }
 </style>
