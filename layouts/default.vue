@@ -1,11 +1,11 @@
 <template>
   <div class="layout-container">
-    <nav :class="{ 'scrolled': isScrolled }">
+    <nav :class="{ 'scrolled': isScrolled, 'mobile-menu-open': isMenuOpen }">
       <div class="nav-content">
         <div class="logo">
           <NuxtLink to="/" @click="closeMenu">
             <img src="/public/img/cflmun_logo.png" alt="CFLMUN Logo" class="nav-logo" />
-            <span>CFLMUN'26</span>
+            <span class="logo-text">CFLMUN'26</span>
           </NuxtLink>
         </div>
 
@@ -56,30 +56,26 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
-import { useRoute } from 'vue-router' // Bu satır zorunludur
+import { useRoute } from 'vue-router'
 
 const isScrolled = ref(false)
-const isMenuOpen = ref(false) // YENİ: Menü durumu
-const route = useRoute() // YENİ: Rota izleyicisi için
+const isMenuOpen = ref(false)
+const route = useRoute()
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 50
 }
 
-// YENİ: Menüyü açma/kapama fonksiyonu
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
-  // Sayfa kaydırmayı engelle
   document.body.style.overflow = isMenuOpen.value ? 'hidden' : ''
 }
 
-// YENİ: Menüyü kapatma fonksiyonu
 const closeMenu = () => {
   isMenuOpen.value = false
   document.body.style.overflow = ''
 }
 
-// YENİ: Sayfa değiştiğinde menüyü otomatik kapat
 watch(() => route.path, () => {
   closeMenu()
 })
@@ -90,77 +86,113 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
-  document.body.style.overflow = '' // Komponent ölürse scroll kilidini aç
+  document.body.style.overflow = ''
 })
 </script>
 
 <style scoped>
-/* --- TEMEL STİLLER --- */
+/* --- TEMEL AYARLAR --- */
 .layout-container {
   background-color: #050505;
   color: #ffffff;
   min-height: 100vh;
   font-family: 'Montserrat', sans-serif;
-  overflow-x: hidden; /* Yatay kaymayı kesin engeller */
+  overflow-x: hidden;
 }
 
-/* NAVBAR */
+/* --- NAVBAR --- */
 nav {
-  position: fixed; top: 0; left: 0; width: 100%;
-  z-index: 9999; padding: 20px 0;
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%;
+  z-index: 9999; 
+  padding: 20px 0;
   transition: all 0.4s ease;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+  
+  /* main.css ÇAKIŞMASINI ÖNLEYEN KODLAR (ÖNEMLİ) */
+  clip-path: none !important; 
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
 }
+
 nav.scrolled {
-  background: rgba(0, 0, 0, 0.95); padding: 15px 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); border-bottom: 1px solid #222;
+  background: rgba(0, 0, 0, 0.95); 
+  padding: 15px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); 
+  border-bottom: 1px solid #222;
 }
+
 .nav-content {
-  max-width: 1200px; margin: 0 auto; padding: 0 20px;
-  display: flex; justify-content: space-between; align-items: center;
-  flex-wrap: nowrap; /* Logo ve butonun asla alt alta düşmemesini sağlar */
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 20px;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
 }
 
-/* LOGO */
+/* --- LOGO --- */
 .logo a {
-  display: flex; align-items: center; gap: 12px;
-  font-size: 1.5rem; font-weight: 800; color: white;
-  text-decoration: none; letter-spacing: 2px;
-  position: relative; z-index: 10002;
+  display: flex; 
+  align-items: center; 
+  gap: 12px;
+  text-decoration: none; 
+  color: white;
+  position: relative; 
+  z-index: 10002; /* Menü perdesinin üstünde kalsın */
 }
-.nav-logo { height: 40px; width: auto; object-fit: contain; }
 
-/* ORTAK LİNK STİLLERİ */
+.nav-logo { 
+  height: 40px; 
+  width: auto; 
+  object-fit: contain; 
+}
+
+.logo-text {
+  font-size: 1.5rem; 
+  font-weight: 800; 
+  letter-spacing: 2px;
+  white-space: nowrap; /* Metnin aşağı kaymasını engeller */
+}
+
+/* --- LINK STİLLERİ --- */
 .links a {
-  text-decoration: none; color: #ccc;
-  font-size: 0.9rem; font-weight: 500; transition: 0.3s;
+  text-decoration: none; 
+  color: #ccc;
+  font-size: 0.9rem; 
+  font-weight: 500; 
+  transition: 0.3s;
 }
-.links a:hover, .links a.router-link-active {
-  color: white; text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
-}
-.apply-btn {
-  border: 1px solid white; padding: 8px 20px; border-radius: 20px;
-}
-.apply-btn:hover { background: white; color: black !important; }
 
-/* FOOTER STİLLERİ aynı kalabilir */
-/* ... (Aşağıdaki kodda footer stillerini de ekledim) ... */
+.links a:hover, .links a.router-link-active {
+  color: white; 
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.apply-btn {
+  border: 1px solid white; 
+  padding: 8px 20px; 
+  border-radius: 20px;
+}
+.apply-btn:hover { 
+  background: white; 
+  color: black !important; 
+}
 
 /* =========================================
-   MASAÜSTÜ GÖRÜNÜM (min-width: 1025px)
+   MASAÜSTÜ GÖRÜNÜM (> 1030px)
    ========================================= */
-@media (min-width: 1025px) {
-  /* Hamburger butonu görünmesin */
-  .hamburger-btn {
-    display: none !important;
-  }
+@media (min-width: 1031px) {
+  .hamburger-btn { display: none !important; }
 
-  /* Linkler yan yana dizilsin */
   .links {
-    display: flex !important; /* Flex zorunlu */
+    display: flex !important;
     align-items: center;
     gap: 20px;
-    position: static; /* Mobil menü pozisyonundan çıkar */
+    position: static;
     background: transparent;
     height: auto;
     width: auto;
@@ -169,68 +201,93 @@ nav.scrolled {
 }
 
 /* =========================================
-   MOBİL / TABLET GÖRÜNÜM (max-width: 1024px)
+   TABLET VE MOBİL (< 1030px)
    ========================================= */
-@media (max-width: 1024px) {
-  /* Hamburger butonu GÖRÜNSÜN */
+@media (max-width: 1030px) {
   .hamburger-btn {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 30px; height: 22px;
-    background: transparent; border: none; cursor: pointer;
-    padding: 0; z-index: 10002;
+    width: 30px; 
+    height: 22px;
+    background: transparent; 
+    border: none; 
+    cursor: pointer;
+    padding: 0; 
+    z-index: 10002;
+    margin-left: 15px; /* Logoya çok yapışmasın */
   }
   
   .hamburger-btn span {
-    width: 100%; height: 3px; background-color: white;
-    border-radius: 3px; transition: all 0.3s ease;
+    width: 100%; 
+    height: 3px; 
+    background-color: white;
+    border-radius: 3px; 
+    transition: all 0.3s ease;
   }
   
-  /* Buton X animasyonu */
+  /* Hamburger Animasyonu */
   .hamburger-btn.active span:nth-child(1) { transform: translateY(9.5px) rotate(45deg); }
   .hamburger-btn.active span:nth-child(2) { opacity: 0; }
   .hamburger-btn.active span:nth-child(3) { transform: translateY(-9.5px) rotate(-45deg); }
 
-  /* Menü Kapalıyken (Mobil Menü Perdesi) */
+  /* Menü Perdesi */
   .links {
     display: flex; 
     flex-direction: column; 
     justify-content: center;
     align-items: center;
     position: fixed; 
-    top: 0; right: 0;
-    height: 100vh; width: 100%;
+    top: 0; 
+    right: 0;
+    height: 100vh; 
+    width: 100%;
     background-color: rgba(5, 5, 5, 0.98);
     backdrop-filter: blur(10px);
     z-index: 10001;
-    gap: 35px;
-    
-    /* Animasyon: Başlangıçta sağda gizle */
+    gap: 30px;
     transform: translateX(100%); 
     transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
   }
 
-  /* Menü Açıkken */
   .links.nav-active {
-    transform: translateX(0); /* Ekrana getir */
+    transform: translateX(0);
   }
 
-  .links a {
-    font-size: 1.5rem; color: white; margin: 0;
+  .links a { font-size: 1.5rem; color: white; margin: 0; }
+  .apply-btn { margin-top: 20px; padding: 15px 40px; font-size: 1.2rem; }
+}
+
+/* =========================================
+   ÇOK KÜÇÜK EKRANLAR (iPhone SE, vb.) (< 480px)
+   ========================================= */
+@media (max-width: 480px) {
+  .nav-content {
+    padding: 0 15px; /* Yan boşlukları azalt */
+  }
+
+  .logo-text {
+    font-size: 1.2rem; /* Logo yazısını küçült */
+  }
+
+  .nav-logo {
+    height: 32px; /* Logo ikonunu küçült */
   }
   
-  .apply-btn {
-    margin-top: 20px; padding: 15px 40px; font-size: 1.2rem;
+  .logo a {
+    gap: 8px; /* İkon ve yazı arasını daralt */
   }
 }
 
-/* --- FOOTER STİLLERİ --- */
+/* FOOTER */
 footer {
-  background: #000; border-top: 1px solid #222;
-  padding: 3rem 1rem; text-align: center; margin-top: auto;
+  background: #000; 
+  border-top: 1px solid #222;
+  padding: 3rem 1rem; 
+  text-align: center; 
+  margin-top: auto;
 }
-.footer-content h3 { font-size: 1.2rem; margin-bottom: 1rem; letter-spacing: 1px; }
+.footer-content h3 { font-size: 1.2rem; margin-bottom: 1rem; }
 .footer-content p { color: #666; font-size: 0.9rem; }
 .socials { margin: 1.5rem 0; }
 .socials a { margin: 0 10px; }
