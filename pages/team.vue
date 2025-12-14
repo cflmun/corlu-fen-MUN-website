@@ -1,8 +1,8 @@
 <template>
   <div class="page-wrapper">
     <div class="page-header">
-      <h1>EKİBİMİZ</h1>
-      <p>ÇFLMUN'25 Arkasındaki Güç</p>
+      <h1>Our Team</h1>
+      <p>The Power Behind CFLMUN'26</p>
     </div>
 
     <div class="team-section">

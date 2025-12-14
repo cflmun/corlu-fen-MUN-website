@@ -125,6 +125,18 @@ header .container {
     align-items: center;
 }
 
+.logo a {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Logo ve yazı arasındaki boşluk */
+  /* Diğer yazı ayarları aynı kalabilir */
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+
 .logo-area {
     display: flex;
     align-items: center;
@@ -176,6 +188,12 @@ nav ul li a:hover {
     color: white;
 }
 
+.nav-logo {
+  height: 40px; /* Navbar logosunun yüksekliği */
+  width: auto;
+  object-fit: contain;
+}
+
 .apply-btn-nav {
     border: 1px solid var(--accent-color);
     padding: 8px 20px;
@@ -212,6 +230,34 @@ footer {
 
 footer p {
     opacity: 0.7;
+}
+
+.socials {
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.socials a {
+  /* Link etiketi kapsayıcı olarak davranır */
+  display: block;
+  width: 40px;  /* İkon genişliği */
+  height: 40px; /* İkon yüksekliği */
+  transition: transform 0.3s ease;
+}
+
+.socials a img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Görseli bozmadan kutuya sığdırır */
+}
+
+/* Üzerine gelince (Hover) efekti */
+.socials a:hover {
+  transform: scale(1.1); /* Hafifçe büyür */
+  /* İsteğe bağlı: parlaklık efekti */
+  filter: brightness(1.2); 
 }
 
 /* --- Responsive --- */

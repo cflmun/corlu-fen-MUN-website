@@ -1,8 +1,8 @@
 <template>
   <div class="page-wrapper">
     <div class="page-header">
-      <h1>KOMİTELER</h1>
-      <p>ÇFLMUN'25 Akademik Organları</p>
+      <h1>COMMITTEES</h1>
+      <p>ACADEMIC BODIES OF CFLMUN'26</p>
     </div>
 
     <div class="committees-grid container">
@@ -25,9 +25,9 @@
 
 <script setup>
 const committees = [
-  { short: 'DISEC', name: 'Disarmament & Int. Security', agenda: 'Silahlanma Yarışı ve Uzay Güvenliği', level: 'Beginner' },
-  { short: 'NATO', name: 'North Atlantic Treaty Org.', agenda: 'Arktik Bölgesindeki Tehditler', level: 'Intermediate' },
-  { short: 'JCC', name: 'Joint Crisis Committee', agenda: '1962 Küba Füze Krizi', level: 'Advanced / Crisis' },
+  { short: 'DISEC', name: 'Disarmament & Int. Security', agenda: 'The Arms Race and Space Security', level: 'Beginner' },
+  { short: 'NATO', name: 'North Atlantic Treaty Org.', agenda: 'Threats in the Arctic Region', level: 'Intermediate' },
+  { short: 'JCC', name: 'Joint Crisis Committee', agenda: 'The 1962 Cuban Missile Crisis', level: 'Advanced / Crisis' },
   // Buraya diğer komiteleri ekle
 ]
 </script>

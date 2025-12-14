@@ -23,7 +23,7 @@
 We would be delighted to see you at this event, where we seek solutions to global problems from young perspectives and where the heart of diplomacy beats.
         </p>
         <div class="sg-sign">
-          <strong>Ad Soyad</strong>
+          <strong>Sümeyra Gülsüm Çolak</strong>
           <span>Secretary General</span>
         </div>
       </div>

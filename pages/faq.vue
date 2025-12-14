@@ -1,6 +1,6 @@
 <template>
   <div class="page-wrapper">
-    <div class="page-header"><h1>S.S.S.</h1></div>
+    <div class="page-header"><h1>FAQ</h1></div>
     
     <div class="faq-container">
       <div v-for="(item, index) in faqs" :key="index" class="faq-item" @click="toggle(index)">

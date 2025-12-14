@@ -1,25 +1,25 @@
 <template>
   <div class="apply-page">
     <div class="content">
-      <h1>BAŞVURULAR</h1>
-      <p>ÇFLMUN'25 ailesinin bir parçası ol.</p>
+      <h1>APPLICATIONS</h1>
+      <p>Become a part of the CFLMUN'26 family.</p>
 
       <div class="cards-wrapper">
         <a href="https://forms.google.com/..." target="_blank" class="apply-card">
-          <h2>Bireysel Delege</h2>
-          <p>Bağımsız katılım</p>
+          <h2>Individual Delegate</h2>
+          <p>Independent Participation</p>
           <span class="arrow">→</span>
         </a>
 
         <a href="https://forms.google.com/..." target="_blank" class="apply-card highlight">
-          <h2>Delegasyon</h2>
-          <p>En az 5 kişilik gruplar</p>
+          <h2>Delegation</h2>
+          <p>Groups of at least 5 people</p>
           <span class="arrow">→</span>
         </a>
 
         <a href="https://forms.google.com/..." target="_blank" class="apply-card">
-          <h2>Ekip Üyesi</h2>
-          <p>Akademi & Organizasyon</p>
+          <h2>Team Member</h2>
+          <p>Academy & Organization</p>
           <span class="arrow">→</span>
         </a>
       </div>
