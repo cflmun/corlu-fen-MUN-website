@@ -100,15 +100,15 @@ onUnmounted(() => {
 .hero {
   height: 100vh;
   background-image: url('/img/okul-anasayfa-foto.png');
-  background-size: cover;
-  background-position: center;
+  background-size: cover;           /* Normalde tam ekranı kaplasın */
+  background-position: center;      /* Ortala */
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  position: relative;
 }
-
 
 
 .overlay {
@@ -371,5 +371,31 @@ onUnmounted(() => {
   .countdown {
     gap: 10px;
   }
+
+  /* 📱 Mobilde fotoğraf tam sığsın ama siyahlık kalmasın */
+  .hero {
+    background-size: cover;          /* Alanı tam kapla */
+    background-position: top center; /* Üstten hizala (çoğu fotoğrafta baş kısmı önemli olur) */
+    background-repeat: no-repeat;
+    height: 100vh;                   /* Ekranı tam kaplasın */
+  }
+
+  /* Eğer telefon dikeydeyse biraz kırpma olabilir ama boşluk kalmaz */
+  @media (orientation: portrait) {
+    .hero {
+      background-size: cover;
+      background-position: center top;
+    }
+  }
+
+  /* Eğer yatayda (landscape) görüntüleniyorsa tam görünüm için */
+  @media (orientation: landscape) {
+    .hero {
+      background-size: contain;
+      background-position: center;
+      background-color: black;
+    }
+  }
 }
 </style>
+
