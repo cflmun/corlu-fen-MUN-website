@@ -99,13 +99,16 @@ onUnmounted(() => {
 <style scoped>
 .hero {
   height: 100vh;
-  /* Buraya okulun veya şehrin havalı bir fotoğrafını koy */
   background-image: url('/img/okul-anasayfa-foto.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
+
 
 .overlay {
   position: absolute;
