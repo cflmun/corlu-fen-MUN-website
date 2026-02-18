@@ -7,11 +7,16 @@
 
     <div class="committees-grid container">
       <div v-for="c in committees" :key="c.short" class="c-card">
+
         <div class="c-img">
-          <span>{{ c.short }}</span>
+          <img :src="c.image" :alt="c.short" class="committee-image" />
         </div>
+
         <div class="c-info">
-          <h3>{{ c.name }}</h3>
+          <h3 class="spaced-short-name">
+            <span v-for="(char, index) in c.short" :key="index">{{ char }}</span>
+          </h3>
+
           <p class="agenda"><strong>Agenda:</strong> {{ c.agenda }}</p>
 
           <div class="c-footer">
@@ -26,31 +31,30 @@
 </template>
 
 <script setup>
-// Komite Listesi Güncellendi
 const committees = [
   {
     short: 'DISEC',
-    name: 'Disarmament & Int. Security',
+    image: '/img/disec-logo.png', // Düzeltildi
     agenda: 'The Arms Race and Space Security'
   },
   {
     short: 'UNHCR',
-    name: 'UN High Commissioner for Refugees',
+    image: '/img/unhcr-logo.png', // Eğer bu dosya da "img" klasöründeyse böyle olmalı
     agenda: 'To be announced...'
   },
   {
     short: 'UNODC',
-    name: 'UN Office on Drugs and Crime',
+    image: '/img/unodc-logo.png',
     agenda: 'To be announced...'
   },
   {
     short: 'INTERPOL',
-    name: 'Int. Criminal Police Org.',
+    image: '/img/interpol-logo.png',
     agenda: 'To be announced...'
   },
   {
     short: 'HCC',
-    name: 'Historic Crisis Committee',
+    image: '/img/hcc-logo.png',
     agenda: 'To be announced...'
   },
 ]
@@ -108,10 +112,17 @@ const committees = [
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: #333;
   border-bottom: 1px solid #222;
+  overflow: hidden;
+  /* Taşmaları engellemek için */
+}
+
+/* Yeni Eklenen: Fotoğraf Stilleri */
+.committee-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Eğer logoları kesilmeden tam sığdırmak istersen 'contain' olarak değiştirebilirsin */
 }
 
 .c-info {
@@ -122,10 +133,18 @@ const committees = [
   justify-content: space-between;
 }
 
-.c-info h3 {
+/* Yeni Eklenen: Harfleri Yayan Başlık Stili */
+.spaced-short-name {
   margin: 0 0 15px;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
+  /* Gözüne daha iyi hitap etmesi için biraz büyütebilirsin */
   color: white;
+  display: flex;
+  justify-content: space-between;
+  /* Sihir burada gerçekleşiyor */
+  font-weight: 900;
+  letter-spacing: 0;
+  /* Ekstra boşluk olmaması için sıfırlıyoruz */
 }
 
 .agenda {
@@ -135,14 +154,12 @@ const committees = [
   line-height: 1.5;
 }
 
-/* Footer ve Buton Düzenlemeleri */
 .c-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
   margin-top: auto;
-  /* Footer'ı her zaman en alta iter */
 }
 
 .btn-sm {
@@ -153,11 +170,9 @@ const committees = [
   font-weight: bold;
   transition: all 0.2s ease;
   flex: 1;
-  /* Butonların eşit genişlikte olmasını sağlar */
   text-align: center;
 }
 
-/* Pre-Documents Butonu (Eski Level Tag rengini referans alır) */
 .pre-doc-btn {
   background: #b91c1c;
   color: white;
@@ -169,7 +184,6 @@ const committees = [
   border-color: #8f1616;
 }
 
-/* Study Guide Butonu (Mevcut tasarım) */
 .study-btn {
   background: transparent;
   border: 1px solid #555;
