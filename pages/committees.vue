@@ -12,11 +12,13 @@
         </div>
         <div class="c-info">
           <h3>{{ c.name }}</h3>
-          <p class="agenda"><strong>Gündem:</strong> {{ c.agenda }}</p>
+          <p class="agenda"><strong>Agenda:</strong> {{ c.agenda }}</p>
+
           <div class="c-footer">
-            <span class="level-tag">{{ c.level }}</span>
-            <button class="study-btn">Study Guide</button>
+            <button class="btn-sm pre-doc-btn">Pre-Documents</button>
+            <button class="btn-sm study-btn">Study Guide</button>
           </div>
+
         </div>
       </div>
     </div>
@@ -24,26 +26,63 @@
 </template>
 
 <script setup>
+// Komite Listesi Güncellendi
 const committees = [
-  { short: 'DISEC', name: 'Disarmament & Int. Security', agenda: 'The Arms Race and Space Security', level: 'Beginner' },
-  { short: 'NATO', name: 'North Atlantic Treaty Org.', agenda: 'Threats in the Arctic Region', level: 'Intermediate' },
-  { short: 'JCC', name: 'Joint Crisis Committee', agenda: 'The 1962 Cuban Missile Crisis', level: 'Advanced / Crisis' },
-  // Buraya diğer komiteleri ekle
+  {
+    short: 'DISEC',
+    name: 'Disarmament & Int. Security',
+    agenda: 'The Arms Race and Space Security'
+  },
+  {
+    short: 'UNHCR',
+    name: 'UN High Commissioner for Refugees',
+    agenda: 'To be announced...'
+  },
+  {
+    short: 'UNODC',
+    name: 'UN Office on Drugs and Crime',
+    agenda: 'To be announced...'
+  },
+  {
+    short: 'INTERPOL',
+    name: 'Int. Criminal Police Org.',
+    agenda: 'To be announced...'
+  },
+  {
+    short: 'HCC',
+    name: 'Historic Crisis Committee',
+    agenda: 'To be announced...'
+  },
 ]
 </script>
 
 <style scoped>
-.page-wrapper { padding-top: 100px; padding-bottom: 50px; }
-.page-header { text-align: center; margin-bottom: 60px; }
-.page-header h1 { font-size: 3rem; color: #fff; margin-bottom: 10px; }
-.page-header p { color: #888; }
+.page-wrapper {
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
 
-.committees-grid { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-  gap: 30px; 
-  max-width: 1200px; 
-  margin: 0 auto; 
+.page-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.page-header p {
+  color: #888;
+}
+
+.committees-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 0 20px;
 }
 
@@ -53,6 +92,8 @@ const committees = [
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .c-card:hover {
@@ -64,17 +105,80 @@ const committees = [
 .c-img {
   height: 180px;
   background: #1a1a1a;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 2.5rem; font-weight: 900; color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #333;
   border-bottom: 1px solid #222;
 }
 
-.c-info { padding: 25px; }
-.c-info h3 { margin: 0 0 15px; font-size: 1.4rem; color: white; }
-.agenda { color: #bbb; font-size: 0.95rem; margin-bottom: 20px; line-height: 1.5; }
+.c-info {
+  padding: 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-.c-footer { display: flex; justify-content: space-between; align-items: center; }
-.level-tag { background: #b91c1c; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
-.study-btn { background: transparent; border: 1px solid #555; color: #888; padding: 5px 15px; cursor: pointer; transition: 0.2s; }
-.study-btn:hover { border-color: white; color: white; }
+.c-info h3 {
+  margin: 0 0 15px;
+  font-size: 1.4rem;
+  color: white;
+}
+
+.agenda {
+  color: #bbb;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+/* Footer ve Buton Düzenlemeleri */
+.c-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  /* Footer'ı her zaman en alta iter */
+}
+
+.btn-sm {
+  font-size: 0.8rem;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  flex: 1;
+  /* Butonların eşit genişlikte olmasını sağlar */
+  text-align: center;
+}
+
+/* Pre-Documents Butonu (Eski Level Tag rengini referans alır) */
+.pre-doc-btn {
+  background: #b91c1c;
+  color: white;
+  border: 1px solid #b91c1c;
+}
+
+.pre-doc-btn:hover {
+  background: #8f1616;
+  border-color: #8f1616;
+}
+
+/* Study Guide Butonu (Mevcut tasarım) */
+.study-btn {
+  background: transparent;
+  border: 1px solid #555;
+  color: #888;
+}
+
+.study-btn:hover {
+  border-color: white;
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+}
 </style>
