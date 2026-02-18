@@ -30,7 +30,7 @@
             <h4>Süleymanpaşa</h4>
             <ul class="bus-list">
               <li><p>To the **Old Bus Terminal**: Bus numbers 1/3, 10, 11/B, 11, 12, 13, and 2/7.</p></li>
-              <li><p>To the **Çorlu Bus Terminal**: Bus numbers 34 and 201.</p></li>
+              <li><p>To the **Çorlu Bus Terminal**: Bus numbers 80 and 201.</p></li>
               <li><p>To the **Schools Area** (Okullar Bölgesi): Bus numbers 11, 12, 14, 4, 5, 7, 8, and 9.</p></li>
             </ul>
           </div>
@@ -39,7 +39,7 @@
             <h4>Çerkezköy</h4>
             <ul class="bus-list">
               <li><p>To the **Çerkezköy Bus Terminal**: Bus numbers 1, 4, and 6.</p></li>
-              <li><p>To the **Çorlu Bus Terminal**: Bus numbers 34 and 202A.</p></li>
+              <li><p>To the **Çorlu Bus Terminal**: Bus numbers 80 and 202A.</p></li>
               <li><p>To the **Schools Area**: Bus numbers 11, 12, 14, 4, 5, 7, 8, and 9.</p></li>
             </ul>
           </div>
