@@ -44,7 +44,7 @@
           <a href="https://instagram.com/cflmun" target="_blank" aria-label="Instagram">
             <img src="/public/img/instagram-logo.png" alt="Instagram" />
           </a>
-          <a href="mailto:info@cflmun.com" aria-label="Email">
+          <a href="mailto:cfl.munn@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
             <img src="/public/img/email-logo.png" alt="Email" />
           </a>
         </div>
