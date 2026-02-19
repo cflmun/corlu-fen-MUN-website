@@ -509,22 +509,24 @@ onUnmounted(() => {
   border-radius: 12px;
   padding: 40px 50px;
 
-  /* YENİ KOD: */
-  min-height: 580px;
-  /* Kendi orijinal en uzun metnini eklediğinde bu sayıyı tam sığacak şekilde ayarla (örn: 600px, 650px) */
+  /* SABİT YÜKSEKLİK: Murat Efe'nin metnine göre ayarlandı */
+  height: 1000px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  /* Metin her zaman en üstten başlar */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
-  /* overflow-y: auto; satırını sildik, artık kaydırma çubuğu yok! */
+  /* Scroll bar'ı tamamen gizle ve kutu boyunu koru */
+  overflow: hidden;
+  position: relative;
 }
 
 .slide-content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100%;
+  /* Kutu yüksekliğinin tamamını kullan */
 }
 
 .message-text {
@@ -532,7 +534,9 @@ onUnmounted(() => {
   line-height: 1.8;
   color: #ddd;
   white-space: pre-line;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  /* Metin çok uzun olsa bile kutuyu itmez */
+  flex-grow: 1;
 }
 
 /* index.vue içindeki ilgili stil alanı */
@@ -770,10 +774,9 @@ onUnmounted(() => {
   }
 
   .message-box {
-    min-height: 800px;
-    /* Mobildeki en uzun metne göre bu sayıyı artır/azalt */
+    height: 1100px;
+    /* Mobilde Murat Efe'nin metni çok uzayacağı için */
     padding: 30px 20px;
-    height: auto;
   }
 
   .nav-arrow {
