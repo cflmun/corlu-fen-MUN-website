@@ -55,7 +55,7 @@
   display: block;
   width: 80px; /* Çizgi uzunluğu */
   height: 3px; /* Çizgi kalınlığı */
-  background-color: #b91c1c; /* Kırmızı renk */
+  background-color: #1c33b9; /* Kırmızı renk */
   margin: 15px auto 0; /* Çizgiyi ortalar ve başlık ile arasını açar */
   border-radius: 2px;
 }
@@ -70,7 +70,7 @@
   width: 180px; height: 180px; background: #222; border-radius: 50%;
   margin: 0 auto 20px; transition: 0.3s; border: 3px solid transparent;
 }
-.member-card:hover .avatar { border-color: #b91c1c; }
+.member-card:hover .avatar { border-color: #1c33b9; }
 
 h3 { margin: 5px 0; color: white; }
 span { color: #888; font-style: italic; }

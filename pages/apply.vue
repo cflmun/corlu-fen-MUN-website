@@ -48,9 +48,9 @@ p { color: #888; margin-bottom: 40px; }
 .apply-card:hover { transform: translateY(-10px); border-color: white; }
 .apply-card h2 { margin-top: 0; font-size: 1.4rem; }
 .apply-card p { font-size: 0.9rem; color: #666; margin-bottom: 20px; }
-.arrow { font-size: 2rem; color: #b91c1c; }
+.arrow { font-size: 2rem; color: #1c33b9; }
 
-.highlight { background: #b91c1c; border-color: #b91c1c; }
+.highlight { background: #1c33b9; border-color: #1c33b9; }
 .highlight p { color: #ffcccc; }
 .highlight .arrow { color: white; }
 </style>

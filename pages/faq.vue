@@ -54,5 +54,5 @@ const faqs = [
 .answer { 
   padding: 0 20px 20px; color: #999; line-height: 1.6; border-top: 1px solid #222; margin-top: -5px; padding-top: 15px; 
 }
-.icon { color: #b91c1c; font-weight: bold; font-size: 1.2rem; }
+.icon { color: #1c33b9; font-weight: bold; font-size: 1.2rem; }
 </style>

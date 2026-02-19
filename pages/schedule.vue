@@ -206,7 +206,7 @@
 
 	.day-header {
 	font-size: 1.5rem;
-	color: #b91c1c;
+	color: #1c33b9;
 	border-bottom: 1px solid #333;
 	padding-bottom: 10px;
 	margin-bottom: 20px;
@@ -258,7 +258,7 @@
 	}
 	.time {
 	margin-bottom: 5px;
-	color: #b91c1c; /* Mobilde saati kırmızı yaparak ayıralım */
+	color: #1c33b9; /* Mobilde saati kırmızı yaparak ayıralım */
 	font-size: 1rem;
 	}
 	}
