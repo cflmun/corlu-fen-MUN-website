@@ -25,14 +25,11 @@ const toggle = (i) => {
 }
 
 const faqs = [
-  { q: 'What is the conference fee?', a: 'Our delegation application fee is 1700₺. This covers participation in all conference sessions, delegate kits, and event materials.' },
-  { q: 'What is the dress code?', a: 'The dress code is formal business attire. This means delegates are expected to wear suits, blazers, dress shirts, ties, or other professional clothing that reflects a diplomatic environment.' },
-  { q: 'Is accommodation provided?', a: 'Unfortunately, we do not provide accommodation for delegates. However, we can recommend nearby hotels upon request.' },
-  { q: 'Where will the conference take place?', a: 'The conference will be held at Çorlu Borsa İstanbul Science High School, located in Çorlu/Tekirdağ, Türkiye.' },
-  { q: 'What are the conference dates?', a: 'The event will take place from March 1st to May 3rd, 2026.' },
-  { q: 'How can I contact the organizing team?', a: 'You can reach us via email at contact@cflmun.org or through our official Instagram page (@cflmun).' },
-  { q: 'Can individual delegates apply?', a: 'Yes! Independent delegates are welcome to apply, even if they are not part of a school delegation.' },
-  { q: 'Will meals be provided during the conference?', a: 'Yes, lunch and light refreshments will be provided for all participants on each conference day.' },
+  { q: 'How can I apply?', a: 'Delegates, delegations and chairboard members can apply through the forms available on our website.' },
+  { q: 'Is there a dress code?', a: 'Yes,there is.The dress code is Bussinness Formal.For men,this includes a suit,dress shirt,and tie.For women it includes a business suit,and blouse.' },
+  { q: 'How long will the conference last?', a: 'The conference will last for 3 days, between 1-3 May 2026.' },
+  { q: 'How can I contact the organizing team?', a: 'You can contact the Director General via Whatsapp by phone number 05013407151.' },
+  { q: 'What’s included in the fee?', a: 'The fee includes 3 days of breakfast and lunchs, snacks and a starter pack that will be given on the first day.' },
 
 ]
 </script>

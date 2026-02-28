@@ -98,7 +98,7 @@
               <span class="icon">📧</span>
               <div>
                 <strong>Email</strong>
-                <p>cflmunn@gmail.com</p>
+                <p>cfl.munn@gmail.com</p>
               </div>
             </div>
           </div>
@@ -509,7 +509,7 @@ onUnmounted(() => {
   border-radius: 12px;
   padding: 40px 50px;
 
-  /* SABİT YÜKSEKLİK: Murat Efe'nin metnine göre ayarlandı */
+  /* SABİT YÜKSEKLİK: ayarlandı */
   height: 1000px;
   display: flex;
   flex-direction: column;
