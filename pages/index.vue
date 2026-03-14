@@ -158,9 +158,24 @@ const submitContactForm = async () => {
   formStatus.value = { type: '', message: '' }
 
   try {
-    // Firebase sadece client tarafında çalıştırılır
-    const { $firebase } = useNuxtApp();
-    const db = $firebase.db;
+    // Firebase plugin'den db'yi al
+    const nuxtApp = useNuxtApp()
+
+    // $firebase.db veya $firestore şeklinde tanımlanmış olabilir,
+    // ikisini de dene
+    let db = null
+
+    if (nuxtApp.$firebase && nuxtApp.$firebase.db) {
+      db = nuxtApp.$firebase.db
+    } else if (nuxtApp.$firestore) {
+      db = nuxtApp.$firestore
+    } else if (nuxtApp.$firebase && nuxtApp.$firebase.firestore) {
+      db = nuxtApp.$firebase.firestore
+    }
+
+    if (!db) {
+      throw new Error('Firestore bağlantısı kurulamadı. Plugin yapılandırmasını kontrol edin.')
+    }
 
     await addDoc(collection(db, 'contact_messages'), {
       fullName: contactForm.value.fullName,
@@ -170,7 +185,6 @@ const submitContactForm = async () => {
     })
 
     formStatus.value = { type: 'success', message: 'Your message has been sent successfully!' }
-
     contactForm.value = { fullName: '', email: '', message: '' }
 
     setTimeout(() => {
@@ -178,8 +192,16 @@ const submitContactForm = async () => {
     }, 5000)
 
   } catch (error) {
-    console.error('Error submitting contact form:', error)
-    formStatus.value = { type: 'error', message: 'An error occurred. Please try again later.' }
+    console.error('Form gönderim hatası:', error)
+
+    // Hatanın türüne göre kullanıcıya daha açıklayıcı mesaj ver
+    if (error.code === 'permission-denied') {
+      formStatus.value = { type: 'error', message: 'Permission denied. Please check Firebase rules.' }
+    } else if (error.message && error.message.includes('Plugin')) {
+      formStatus.value = { type: 'error', message: 'Firebase connection error. Please contact us via email.' }
+    } else {
+      formStatus.value = { type: 'error', message: 'An error occurred. Please try again later.' }
+    }
   } finally {
     isSubmitting.value = false
   }
@@ -236,15 +258,15 @@ Best Regards,
     title: 'Director General',
     text: `Distinguished Delegates,
 
-It’s an honour to welcome you all to Corlu İstanbul Science High School Model United Nations Conference 2026 as the Director General.
+It's an honour to welcome you all to Corlu İstanbul Science High School Model United Nations Conference 2026 as the Director General.
 
-CFLMUN’26 is not just a conference, it’s an environment to connect, debate and find solutions for the future. In this conference you can connect with every MUN lover, debate with other people to find solutions and choose the best option for everyone. In this conference every delegate is just not representing a country or a character, they represent every citizen of their country with thinking out of the box and calculating every point of view from all walks of life.
+CFLMUN'26 is not just a conference, it's an environment to connect, debate and find solutions for the future. In this conference you can connect with every MUN lover, debate with other people to find solutions and choose the best option for everyone. In this conference every delegate is just not representing a country or a character, they represent every citizen of their country with thinking out of the box and calculating every point of view from all walks of life.
 
 Our Academy and Organization teams worked hard with dedication to make this conference enjoyable for everyone. Every committee has the latest topics that you can have fun while debating whether your role or country and you can see various details in every inch of our venue from our team.
 
-This was all generations of CFLMUN club members' dream and this year the dream is becoming true. This conference doesn’t carry things from the team of 2026, it carries things from the team of 2025, 2024, 2023 and even more… That’s why we’re working hard about this conference because our main mission is making everyone comfortable and putting something valuable to them in this conference.
+This was all generations of CFLMUN club members' dream and this year the dream is becoming true. This conference doesn't carry things from the team of 2026, it carries things from the team of 2025, 2024, 2023 and even more… That's why we're working hard about this conference because our main mission is making everyone comfortable and putting something valuable to them in this conference.
 
-If there’s a problem or any questions you have, please don’t hesitate to send an e-mail. We’re very excited to see you in CFLMUN’26. See you there…
+If there's a problem or any questions you have, please don't hesitate to send an e-mail. We're very excited to see you in CFLMUN'26. See you there…
 
 Best Regards,
 `
@@ -255,7 +277,7 @@ Best Regards,
     title: 'Deputy Director General',
     text: `Dear Delegates,
 
-It is with great pleasure and honor that I welcome you to CFLMUN’26 as the Deputy Director General. In this conference, you will engage in meaningful dialogue, share diverse perspectives, and address pressing global issues. Through collaboration, you will enhance  your understanding of international relations, strengthen your communication skills, and build lasting connections while creating unforgettable memories.
+It is with great pleasure and honor that I welcome you to CFLMUN'26 as the Deputy Director General. In this conference, you will engage in meaningful dialogue, share diverse perspectives, and address pressing global issues. Through collaboration, you will enhance  your understanding of international relations, strengthen your communication skills, and build lasting connections while creating unforgettable memories.
 
 We are more than honored to welcome you to this conference. 
 
@@ -263,8 +285,6 @@ Best of Regards,
 `
   }
 ]
-// Not: Metinleri uzun tutmamak için kısalttım, senin orijinal metinlerin durabilir, sadece kod yapısını gösteriyorum. 
-// Orijinal uzun metinlerini buraya yapıştırmayı unutma!
 
 const currentMessageIndex = ref(0)
 let sliderInterval = null
@@ -366,7 +386,6 @@ onUnmounted(() => {
   color: #ffffff !important;
   font-size: 1.5rem;
   margin-bottom: 15px;
-  /* Animasyonu senin kodundan aynen korudum */
   animation: candle-flicker 3s infinite linear;
 }
 
@@ -494,7 +513,7 @@ onUnmounted(() => {
   margin: 0 auto 40px;
 }
 
-/* Slider Stillleri */
+/* Slider Stilleri */
 .slider-wrapper {
   display: flex;
   align-items: center;
@@ -508,16 +527,11 @@ onUnmounted(() => {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 40px 50px;
-
-  /* SABİT YÜKSEKLİK: ayarlandı */
   height: 1000px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  /* Metin her zaman en üstten başlar */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-
-  /* Scroll bar'ı tamamen gizle ve kutu boyunu koru */
   overflow: hidden;
   position: relative;
 }
@@ -526,7 +540,6 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   height: 100%;
-  /* Kutu yüksekliğinin tamamını kullan */
 }
 
 .message-text {
@@ -535,21 +548,14 @@ onUnmounted(() => {
   color: #ddd;
   white-space: pre-line;
   margin-bottom: 20px;
-  /* Metin çok uzun olsa bile kutuyu itmez */
   flex-grow: 1;
 }
 
-/* index.vue içindeki ilgili stil alanı */
-
 .sg-sign {
   margin-top: auto;
-  /* Metinden sonra en alta iter */
   padding-top: 20px;
-  /* Çizgi ile isim arasındaki boşluk */
   border-top: 1px solid rgba(255, 255, 255, 0.15);
-  /* İnce, yarı saydam beyaz çizgi */
   width: 100%;
-  /* Çizginin kutuyu boydan boya kaplaması için */
 }
 
 .sg-sign strong {
@@ -557,7 +563,6 @@ onUnmounted(() => {
   color: white;
   font-size: 1.15rem;
   margin-bottom: 4px;
-  /* İsim ile unvan arasına çok hafif boşluk */
 }
 
 .sg-sign span {
@@ -608,9 +613,7 @@ onUnmounted(() => {
   opacity: 0;
 }
 
-/* --- YENİ EKLENEN KISIMLAR --- */
-
-/* 1. AYIRACI ÇİZGİ */
+/* --- AYIRICI ÇİZGİ --- */
 .section-divider {
   height: 2px;
   width: 100%;
@@ -620,10 +623,9 @@ onUnmounted(() => {
   opacity: 0.6;
 }
 
-/* 2. CONTACT SECTION (YENİLENMİŞ) */
+/* --- CONTACT SECTION --- */
 .contact-section {
   background-color: #05080f;
-  /* Daha koyu, neredeyse siyah bir lacivert */
   padding: 80px 0 100px;
   margin-top: 0;
 }
@@ -634,7 +636,6 @@ onUnmounted(() => {
   align-items: flex-start;
 }
 
-/* Sol Taraf: Bilgiler */
 .contact-info {
   flex: 1;
   padding-top: 10px;
@@ -646,7 +647,6 @@ onUnmounted(() => {
 
 .red-line.left-aligned {
   margin: 0 0 30px 0;
-  /* Sola hizalı çizgi */
 }
 
 .contact-desc {
@@ -692,10 +692,8 @@ onUnmounted(() => {
   font-size: 0.9rem;
 }
 
-/* Sağ Taraf: Form */
 .contact-form-wrapper {
   flex: 1.2;
-  /* Form biraz daha geniş olsun */
   background: rgba(255, 255, 255, 0.03);
   padding: 40px;
   border-radius: 16px;
@@ -775,7 +773,6 @@ onUnmounted(() => {
 
   .message-box {
     height: 1100px;
-    /* Mobilde Murat Efe'nin metni çok uzayacağı için */
     padding: 30px 20px;
   }
 
@@ -783,7 +780,6 @@ onUnmounted(() => {
     display: none;
   }
 
-  /* Yeni layout için mobil ayarlar */
   .contact-container {
     flex-direction: column;
     gap: 40px;
@@ -804,12 +800,10 @@ onUnmounted(() => {
 
   .red-line.left-aligned {
     margin: 0 auto 30px;
-    /* Mobilde tekrar ortala */
   }
 
   .info-items {
     align-items: center;
-    /* Mobilde ikonları ortala */
     text-align: left;
   }
 }
