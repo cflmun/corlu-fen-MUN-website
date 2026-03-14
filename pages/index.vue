@@ -31,6 +31,22 @@
         <div class="cta-group">
           <NuxtLink to="/apply" class="btn btn-primary">Apply Now!</NuxtLink>
           <NuxtLink to="/committees" class="btn btn-outline">Committees</NuxtLink>
+
+          <div class="calendar-wrapper">
+            <button class="btn btn-calendar" @click="toggleCalendar">
+              📅 Add to Calendar
+            </button>
+            <transition name="dropdown">
+              <div v-if="showCalendar" class="calendar-dropdown">
+                <a :href="googleCalendarUrl" target="_blank" @click="showCalendar = false">
+                  🗓️ Google Calendar
+                </a>
+                <a :href="appleCalendarUrl" download="CFLMUN26.ics" @click="showCalendar = false">
+                  🍎 Apple Calendar
+                </a>
+              </div>
+            </transition>
+          </div>
         </div>
       </div>
     </section>
@@ -139,7 +155,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { collection, addDoc } from 'firebase/firestore'
 import { useNuxtApp } from '#app'
 
@@ -148,6 +164,79 @@ const contactForm = ref({
   fullName: '',
   email: '',
   message: ''
+})
+
+// --- TAKVİM ---
+const showCalendar = ref(false)
+
+const toggleCalendar = () => {
+  showCalendar.value = !showCalendar.value
+}
+
+// Dışarı tıklayınca kapat
+const handleOutsideClick = (e) => {
+  if (!e.target.closest('.calendar-wrapper')) {
+    showCalendar.value = false
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', handleOutsideClick)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleOutsideClick)
+})
+
+const googleCalendarUrl = computed(() => {
+  // Google Calendar çok günlü etkinliği destekler, DTEND bitiş günü +1 alır (exclusive)
+  // 1 Mayıs 09:00 → 3 Mayıs 18:30 arası tek etkinlik
+  const base = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+  const title = encodeURIComponent("CFLMUN'26")
+  const details = encodeURIComponent("CFLMUN'26 - Corlu Borsa Istanbul Science High School Model United Nations Conference 2026\n\n1 May: 09:00 - 18:00\n2 May: 10:00 - 18:00\n3 May: 10:00 - 18:30")
+  const location = encodeURIComponent("Çorlu Borsa İstanbul Science High School, Çorlu, Tekirdağ")
+  const start = '20260501T090000'
+  const end = '20260503T183000'
+  return `${base}&text=${title}&details=${details}&location=${location}&dates=${start}/${end}`
+})
+
+const appleCalendarUrl = computed(() => {
+  // ICS formatında 3 ayrı VEVENT (her gün için)
+  const ics = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'CALSCALE:GREGORIAN',
+
+    // 1. Gün
+    'BEGIN:VEVENT',
+    'DTSTART:20260501T090000',
+    'DTEND:20260501T180000',
+    "SUMMARY:CFLMUN'26 - Day 1",
+    'DESCRIPTION:CFLMUN\'26 Day 1 | Registration & Opening Ceremony',
+    'LOCATION:Çorlu Borsa İstanbul Science High School\\, Çorlu\\, Tekirdağ',
+    'END:VEVENT',
+
+    // 2. Gün
+    'BEGIN:VEVENT',
+    'DTSTART:20260502T100000',
+    'DTEND:20260502T180000',
+    "SUMMARY:CFLMUN'26 - Day 2",
+    'DESCRIPTION:CFLMUN\'26 Day 2',
+    'LOCATION:Çorlu Borsa İstanbul Science High School\\, Çorlu\\, Tekirdağ',
+    'END:VEVENT',
+
+    // 3. Gün
+    'BEGIN:VEVENT',
+    'DTSTART:20260503T100000',
+    'DTEND:20260503T183000',
+    "SUMMARY:CFLMUN'26 - Day 3 & Closing",
+    'DESCRIPTION:CFLMUN\'26 Day 3 | Closing Ceremony',
+    'LOCATION:Çorlu Borsa İstanbul Science High School\\, Çorlu\\, Tekirdağ',
+    'END:VEVENT',
+
+    'END:VCALENDAR'
+  ].join('\r\n')
+  return 'data:text/calendar;charset=utf8,' + encodeURIComponent(ics)
 })
 
 const isSubmitting = ref(false)
@@ -511,6 +600,75 @@ onUnmounted(() => {
   height: 4px;
   background: #19213a;
   margin: 0 auto 40px;
+}
+
+.calendar-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.btn-calendar {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-calendar:hover {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.calendar-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  min-width: 200px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+.calendar-dropdown a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  color: white;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.calendar-dropdown a:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.calendar-dropdown a img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.dropdown-enter-active,
+.dropdown-leave-active {
+  transition: all 0.2s ease;
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-8px);
 }
 
 /* Slider Stilleri */
