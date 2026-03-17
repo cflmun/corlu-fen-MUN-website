@@ -5,23 +5,24 @@
       <p>Become a part of the CFLMUN'26 family.</p>
 
       <div class="cards-wrapper">
-        <div class="apply-card">
+        
+        <a href="https://forms.gle/V4GqrvTbDx5vn8SB7" target="_blank" class="apply-card">
           <h2>Individual Delegate</h2>
-          <p>To be announced...</p>
-        </div>
-
-        <div class="apply-card highlight">
+          <p>Independent Participant</p>
+          <div class="price-badge">2000 TL</div>
+          <span class="arrow">→</span>
+        </a> <a href="https://forms.gle/HtFrydxYzGuqXh8Q9" target="_blank" class="apply-card">
           <h2>Delegation</h2>
-          <p>To be announced...</p>
-        </div>
-
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeS9F7TMqeKiQTnI_1PiaN0BSFCZL0YYtT95gPsYwHhaxTf9Q/viewform"
-          target="_blank" class="apply-card">
+          <p>School & Club Delegations</p>
+          <div class="price-badge">2000 TL</div>
+          <span class="arrow">→</span>
+        </a> <a href="https://docs.google.com/forms/d/e/1FAIpQLSeS9F7TMqeKiQTnI_1PiaN0BSFCZL0YYtT95gPsYwHhaxTf9Q/viewform" target="_blank" class="apply-card">
           <h2>Chairboard</h2>
           <p>Academy & Organization</p>
           <div class="price-badge">2000 TL</div>
           <span class="arrow">→</span>
         </a>
+
       </div>
     </div>
   </div>
