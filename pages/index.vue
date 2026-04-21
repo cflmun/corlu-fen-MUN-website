@@ -51,6 +51,33 @@
       </div>
     </section>
 
+    <!-- LATE APPLICATIONS BANNER -->
+    <section class="late-app-section">
+      <div class="late-app-ripple-bg">
+        <span class="bg-ripple br1"></span>
+        <span class="bg-ripple br2"></span>
+        <span class="bg-ripple br3"></span>
+      </div>
+      <div class="late-app-content">
+        <div class="late-app-left">
+          <span class="late-tag">⏰ LIMITED SPOTS REMAINING</span>
+          <h2 class="late-app-title">LATE APPLICATIONS<br><span>ARE NOW OPEN</span></h2>
+          <p class="late-app-desc">Missed the regular deadline? You still have a chance to be part of CFLMUN'26. Submit your late application before spots run out.</p>
+        </div>
+        <div class="late-app-right">
+          <NuxtLink to="/apply" class="late-app-btn">
+            <span>Apply Now</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </NuxtLink>
+        </div>
+      </div>
+      <div class="late-app-ticker">
+        <span class="ticker-track">LATE APPLICATIONS &nbsp;·&nbsp; CFLMUN'26 &nbsp;·&nbsp; 1–3 MAY 2026 &nbsp;·&nbsp; LIMITED SPOTS &nbsp;·&nbsp; APPLY NOW &nbsp;·&nbsp; LATE APPLICATIONS &nbsp;·&nbsp; CFLMUN'26 &nbsp;·&nbsp; 1–3 MAY 2026 &nbsp;·&nbsp; LIMITED SPOTS &nbsp;·&nbsp; APPLY NOW &nbsp;·&nbsp; LATE APPLICATIONS &nbsp;·&nbsp; CFLMUN'26 &nbsp;·&nbsp; 1–3 MAY 2026 &nbsp;·&nbsp; LIMITED SPOTS &nbsp;·&nbsp; APPLY NOW &nbsp;·&nbsp; LATE APPLICATIONS &nbsp;·&nbsp; CFLMUN'26 &nbsp;·&nbsp; 1–3 MAY 2026 &nbsp;·&nbsp; LIMITED SPOTS &nbsp;·&nbsp; APPLY NOW &nbsp;·&nbsp; LATE APPLICATIONS &nbsp;·&nbsp; CFLMUN'26 &nbsp;·&nbsp; 1–3 MAY 2026 &nbsp;·&nbsp; LIMITED SPOTS &nbsp;·&nbsp; APPLY NOW &nbsp;·&nbsp; LATE APPLICATIONS &nbsp;·&nbsp; CFLMUN'26 &nbsp;·&nbsp; 1–3 MAY 2026 &nbsp;·&nbsp; LIMITED SPOTS &nbsp;·&nbsp; APPLY NOW &nbsp;·&nbsp;</span>
+      </div>
+    </section>
+
     <section class="welcome container">
       <div class="section-header">
         <h2>WELCOME</h2>
@@ -919,10 +946,216 @@ onUnmounted(() => {
   color: #e74c3c;
 }
 
+/* ========================================
+   LATE APPLICATIONS SECTION
+======================================== */
+.late-app-section {
+  position: relative;
+  background: linear-gradient(135deg, #060d1f 0%, #0c1e3e 50%, #060d1f 100%);
+  border-top: 1px solid rgba(83, 142, 214, 0.2);
+  border-bottom: 1px solid rgba(83, 142, 214, 0.2);
+  overflow: hidden;
+  padding: 60px 20px 0;
+}
+
+/* Arka plan ripple dalgaları */
+.late-app-ripple-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bg-ripple {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid rgba(83, 142, 214, 0.18);
+  animation: bgRipple 5s ease-out infinite;
+  top: 50%;
+  right: 15%;
+  transform: translate(50%, -50%) scale(0);
+}
+
+.br1 { width: 200px; height: 200px; animation-delay: 0s;   }
+.br2 { width: 200px; height: 200px; animation-delay: 1.6s; }
+.br3 { width: 200px; height: 200px; animation-delay: 3.2s; }
+
+@keyframes bgRipple {
+  0%   { transform: translate(50%, -50%) scale(0);   opacity: 0.8; }
+  100% { transform: translate(50%, -50%) scale(7);   opacity: 0;   }
+}
+
+/* Sweep border top */
+.late-app-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 2px;
+  background: linear-gradient(90deg, transparent, #538ED6, #a8d0ff, transparent);
+  animation: sweep 4s linear infinite;
+}
+
+@keyframes sweep {
+  0%   { left: -60%; }
+  100% { left: 140%;  }
+}
+
+/* Content layout */
+.late-app-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.late-app-left {
+  flex: 1;
+  min-width: 280px;
+}
+
+.late-tag {
+  display: inline-block;
+  background: rgba(83, 142, 214, 0.15);
+  border: 1px solid rgba(83, 142, 214, 0.4);
+  color: #a8d0ff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  animation: tagPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes tagPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(83, 142, 214, 0.35); }
+  50%       { box-shadow: 0 0 0 7px rgba(83, 142, 214, 0);  }
+}
+
+.late-app-title {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 3px;
+  line-height: 1.15;
+  margin: 0 0 16px;
+  text-shadow: 0 0 40px rgba(83, 142, 214, 0.4);
+}
+
+.late-app-title span {
+  color: #538ED6;
+  display: block;
+}
+
+.late-app-desc {
+  color: #7aA8d4;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0;
+}
+
+.late-app-right {
+  display: flex;
+  align-items: center;
+}
+
+.late-app-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #1a3d7c, #2a5cbf);
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  border-radius: 10px;
+  border: 1px solid rgba(83, 142, 214, 0.5);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 25px rgba(83, 142, 214, 0.2);
+  white-space: nowrap;
+}
+
+.late-app-btn:hover {
+  background: linear-gradient(135deg, #2a5cbf, #3a78e8);
+  transform: translateY(-3px);
+  box-shadow: 0 0 45px rgba(83, 142, 214, 0.45);
+}
+
+/* Scrolling ticker band */
+.late-app-ticker {
+  position: relative;
+  z-index: 2;
+  background: rgba(83, 142, 214, 0.1);
+  border-top: 1px solid rgba(83, 142, 214, 0.2);
+  padding: 10px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+}
+
+.ticker-track {
+  display: inline-block;
+  animation: tickerScroll 40s linear infinite;
+  color: #5a9ae0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding-right: 60px;
+  /* İki kopya yan yana koyarak seamless loop sağlanır */
+  white-space: nowrap;
+}
+
+@keyframes tickerScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* MOBİL UYUMLULUK */
 @media (max-width: 768px) {
   .main-title {
     font-size: 3rem;
+  }
+
+  .late-app-content {
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 40px;
+    gap: 24px;
+  }
+
+  .late-app-left {
+    text-align: center;
+  }
+
+  .late-app-title {
+    font-size: 1.8rem;
+  }
+
+  .late-app-desc {
+    margin: 0 auto;
+  }
+
+  .late-app-right {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .late-app-btn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
   }
 
   .slider-wrapper {
