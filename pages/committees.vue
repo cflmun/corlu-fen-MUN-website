@@ -43,10 +43,7 @@
           </div>
 
           <div class="c-footer detail-footer">
-            <button class="action-btn pre-doc-btn">
-              <span class="icon">📄</span> Pre-Documents
-            </button>
-            <button class="action-btn study-btn">
+            <button class="action-btn study-btn" @click="openPdf(selectedCommittee.studyGuide)">
               <span class="icon">📖</span> Study Guide
             </button>
           </div>
@@ -70,34 +67,48 @@ const clearSelection = () => {
   selectedCommittee.value = null
 }
 
+// PDF açma fonksiyonu
+const openPdf = (pdfPath) => {
+  if (pdfPath) {
+    window.open(pdfPath, '_blank')
+  } else {
+    alert('Study Guide belgesi yakında eklenecektir.')
+  }
+}
+
 const committees = [
   {
     short: 'DISEC',
     image: '/img/disec-logo.png',
+    studyGuide: '/docs/disec-study-guide.pdf', 
     agenda: 'Addressing the Usage of Advanced Tech and Chemical Weapons in Ongoing and Recent Histories Armed Conflicts',
     info: `Since addressing the usage of advanced technologies and chemical weapons in ongoing and recent armed conflicts brings a critical issue for the international community, it's a subject that we must address. In these three days delegates will talk about modern warfare's new Advanced technologies in autonomous weapons systems, drones, cyber capabilities, and artificial intelligence, which can escalate to conflicts and bigger damages than usual.\n\nAt the same time, the use of chemical weapons remains a grave violation of international law, causing indiscriminate suffering and long-term environmental and health consequences.\n\nThe ongoing wars and recent wars like Palestine, Ukraine-Russia, Syrian civil war and many others that have ongoing effects will be addressed in the committee since advanced tech and Chemical weapons are a big part of our developing world.`
   },
   {
     short: 'UNODC',
     image: '/img/unodc-logo.png',
+    studyGuide: '/docs/unodc-study-guide.pdf',
     agenda: 'Addressing the Role of Organized Crime in Drug Trafficking',
     info: `The United Nations Office on Drugs and Crime (UNODC) stands at the forefront of the global fight against illicit drugs, transnational organized crime, corruption, and terrorism. As drug trafficking networks grow increasingly sophisticated and interconnected, the role of organized crime has become one of the most pressing challenges facing the international community today.\n\nDrug trafficking is no longer a localized or isolated issue; it is a transnational enterprise driven by powerful criminal organizations that exploit weak governance, conflict zones, economic inequality, and technological advancements. These groups fuel violence, destabilize states, undermine the rule of law, and generate immense profits at the expense of public health, security, and human rights. From production and transportation to money laundering and distribution, organized crime permeates every stage of the global drug trade.\n\nIn this committee, delegates will examine how organized criminal networks operate within drug trafficking systems and assess their impact on societies, economies, and governments worldwide. The UNODC calls upon delegates to explore strategies that strengthen international cooperation, enhance law enforcement and judicial mechanisms, disrupt financial flows, and promote preventive measures addressing the root causes of drug-related crime.\n\nAs representatives of the international community, delegates are expected to engage in constructive debate, balance security with human rights, and propose innovative, realistic, and collaborative solutions. The challenge before them is not only to combat organized crime, but also to protect communities, uphold justice, and reinforce global stability.`
   },
   {
     short: 'UNHCR',
     image: '/img/unhcr-logo.png',
+    studyGuide: '/docs/unhcr-study-guide.pdf',
     agenda: 'Strengthening the Protection and Reception of Refugees Worldwide',
     info: `The United Nations High Commissioner for Refugees (UNHCR) is responsible for protecting the rights and well-being of refugees and forcibly displaced persons worldwide. Today, millions are forced to flee due to conflict, persecution, and humanitarian crises, often facing inadequate protection and difficult reception conditions.\n\nIn this committee, delegates will discuss strengthening international protection mechanisms, improving reception systems in host countries, and enhancing global cooperation and responsibility-sharing. Through collaborative solutions, UNHCR aims to ensure safety, dignity, and protection for refugees across the world.`
   },
   {
     short: 'INTERPOL',
     image: '/img/interpol-logo.png',
+    studyGuide: '/docs/interpol-study-guide.pdf',
     agenda: 'Combating against Italian mafias',
     info: `The International Criminal Police Organization (INTERPOL), is a global organization that helps police from different countries cooperate to fight international crime for a safer world. Founded on September 7, 1923, its headquarters is located in Lyon, France. With 196 member states, it stands as the largest international police organization in the world. In this conference, the INTERPOL committee will focus on taking action against the famous Italian mafias and criminal organizations, whose origins date back to the 19th century. For decades, these groups have established deep-rooted criminal networks, infiltrating economies, governments, and societies with activities such as drug and arms trafficking, money laundering, extortion, and corruption. Delegates will work to develop solutions to combat the widespread crimes committed by Italy’s most powerful criminal organizations: Camorra, ’Ndrangheta, and the Sicilian Mafia. Furthermore, the delegates will discuss potential ways to prevent continuation of these criminal activities.`
   },
   {
     short: 'HCC',
     image: '/img/hcc-logo.png',
+    studyGuide: '/docs/hcc-study-guide.pdf',
     agenda: 'Society of Motherland and Liberty',
     info: `The Committee of Motherland and Liberty places delegates at the heart of the late Ottoman struggle for sovereignty, reform, and national awakening. Established by young Ottoman intellectuals and officers, this clandestine organization sought to challenge absolutism, resist foreign influence, and lay the ideological foundations of a free and constitutional homeland.\n\nIn this Historical Crisis Committee, delegates will step into a period where secrecy, loyalty, and decisive action determine the fate of the Empire. Operating under constant surveillance and political pressure, members must navigate internal divisions, revolutionary strategies, and external threats while preserving the spirit of liberty and national unity.\n\nThis committee demands strategic thinking, historical awareness, and bold decision-making. Every choice may accelerate reform—or trigger irreversible consequences.`
   },
@@ -235,19 +246,16 @@ const committees = [
   background: #121212;
   border: 1px solid #333;
   border-radius: 16px;
-  /* Biraz daha yuvarlatıldı */
   overflow: hidden;
   display: flex;
   flex-direction: column;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  /* Derinlik eklendi */
 }
 
 @media (min-width: 768px) {
   .detail-card {
     flex-direction: row;
     min-height: 500px;
-    /* Büyük ekranlarda minimum yükseklik */
   }
 }
 
@@ -266,7 +274,6 @@ const committees = [
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Resmi doldurur */
 }
 
 @media (min-width: 768px) {
@@ -279,18 +286,15 @@ const committees = [
 .detail-info {
   flex: 2;
   padding: 50px;
-  /* İç boşluk artırıldı */
   display: flex;
   flex-direction: column;
 }
 
 .detail-title {
   font-size: 2.5rem;
-  /* Başlık büyütüldü */
   margin-bottom: 20px;
   justify-content: flex-start;
   gap: 15px;
-  /* Harfler arası boşluk yerine kelime boşluğu gibi */
 }
 
 .agenda-large {
@@ -305,27 +309,21 @@ const committees = [
 .information-text {
   color: #ddd;
   line-height: 1.9;
-  /* Satır aralığı okuma kolaylığı için artırıldı */
   font-size: 1rem;
   white-space: pre-wrap;
   margin-bottom: 40px;
 }
 
-/* --- YENİLENMİŞ BUTON ALANI --- */
+/* --- YENİLENMİŞ TAM BOYUT BUTON ALANI --- */
 .detail-footer {
   margin-top: auto;
   display: flex;
-  flex-wrap: wrap;
-  /* Mobilde alt alta geçsin */
-  gap: 25px;
-  /* Butonlar arası boşluk açıldı */
+  width: 100%;
 }
 
 .action-btn {
-  font-size: 1rem;
-  /* Yazı büyütüldü */
-  padding: 14px 28px;
-  /* Buton boyutları artırıldı */
+  font-size: 1.2rem; /* Daha büyük ve okunaklı font */
+  padding: 18px 28px; /* Dikey olarak (en) biraz daha genişletildi */
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
@@ -335,33 +333,13 @@ const committees = [
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-width: 180px;
-  /* Butonun çok dar olmaması için */
-  flex: 1;
-  /* Mobilde tüm genişliği kaplasın, desktopta eşit paylaşsın */
-  max-width: 300px;
-  /* Çok geniş ekranlarda devasa olmasın */
-}
-
-.pre-doc-btn {
-  background: linear-gradient(135deg, #1c33b9 0%, #15268c 100%);
-  color: white;
-  border: none;
-  box-shadow: 0 4px 15px rgba(28, 51, 185, 0.3);
-  /* Mavi gölge */
-}
-
-.pre-doc-btn:hover {
-  transform: translateY(-3px);
-  /* Yukarı kalkma efekti */
-  box-shadow: 0 8px 25px rgba(28, 51, 185, 0.5);
-  background: linear-gradient(135deg, #2540e0 0%, #1a2fb0 100%);
+  width: 100%; /* Eskiden iki butonun olduğu tüm yatay alanı kaplar */
+  max-width: 100%; /* Sınırı kaldırdık */
 }
 
 .study-btn {
   background: transparent;
   border: 2px solid #555;
-  /* Çerçeve kalınlaştırıldı */
   color: #ccc;
 }
 
@@ -374,7 +352,7 @@ const committees = [
 }
 
 .icon {
-  font-size: 1.2rem;
+  font-size: 1.4rem; /* İkon boyutu butonla orantılı büyütüldü */
 }
 
 /* --- ANIMATIONS --- */
