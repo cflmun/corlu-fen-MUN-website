@@ -9,12 +9,7 @@
           </NuxtLink>
         </div>
 
-        <button 
-          class="hamburger-btn" 
-          @click="toggleMenu" 
-          :class="{ 'active': isMenuOpen }"
-          aria-label="Menu"
-        >
+        <button class="hamburger-btn" @click="toggleMenu" :class="{ 'active': isMenuOpen }" aria-label="Menu">
           <span></span>
           <span></span>
           <span></span>
@@ -27,6 +22,7 @@
           <NuxtLink to="/location" @click="closeMenu">Location</NuxtLink>
           <NuxtLink to="/team" @click="closeMenu">Team</NuxtLink>
           <NuxtLink to="/faq" @click="closeMenu">FAQ</NuxtLink>
+          <NuxtLink to="/sponsors" @click="closeMenu">Sponsors</NuxtLink>
           <NuxtLink to="/apply" class="apply-btn" @click="closeMenu">Apply Now</NuxtLink>
         </div>
       </div>
@@ -39,7 +35,8 @@
     <footer>
       <div class="footer-content">
         <h3>Corlu Borsa Istanbul Science High School Model United Nations</h3>
-        <p>No: 35/1, Bülent Ecevit Boulevard, Zafer Neighborhood, Next to the New State Hospital, Çorlu / Tekirdağ, Türkiye</p>
+        <p>No: 35/1, Bülent Ecevit Boulevard, Zafer Neighborhood, Next to the New State Hospital, Çorlu / Tekirdağ,
+          Türkiye</p>
         <div class="socials">
           <a href="https://instagram.com/cflmun" target="_blank" aria-label="Instagram">
             <img src="/public/img/instagram-logo.png" alt="Instagram" />
@@ -102,91 +99,97 @@ onUnmounted(() => {
 
 /* --- NAVBAR --- */
 nav {
-  position: fixed; 
-  top: 0; 
-  left: 0; 
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  z-index: 9999; 
+  z-index: 9999;
   padding: 20px 0;
   transition: all 0.4s ease;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
-  
+
   /* main.css ÇAKIŞMASINI ÖNLEYEN KODLAR (ÖNEMLİ) */
-  clip-path: none !important; 
+  clip-path: none !important;
   visibility: visible !important;
   opacity: 1 !important;
   height: auto !important;
 }
 
 nav.scrolled {
-  background: rgba(0, 0, 0, 0.95); 
+  background: rgba(0, 0, 0, 0.95);
   padding: 15px 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid #222;
 }
 
 .nav-content {
-  max-width: 1200px; 
-  margin: 0 auto; 
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 0 20px;
-  display: flex; 
-  justify-content: space-between; 
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
 /* --- LOGO --- */
 .logo a {
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   gap: 12px;
-  text-decoration: none; 
+  text-decoration: none;
   color: white;
-  position: relative; 
-  z-index: 10002; /* Menü perdesinin üstünde kalsın */
+  position: relative;
+  z-index: 10002;
+  /* Menü perdesinin üstünde kalsın */
 }
 
-.nav-logo { 
-  height: 40px; 
-  width: auto; 
-  object-fit: contain; 
+.nav-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
 }
 
 .logo-text {
-  font-size: 1.5rem; 
-  font-weight: 800; 
+  font-size: 1.5rem;
+  font-weight: 800;
   letter-spacing: 2px;
-  white-space: nowrap; /* Metnin aşağı kaymasını engeller */
+  white-space: nowrap;
+  /* Metnin aşağı kaymasını engeller */
 }
 
 /* --- LINK STİLLERİ --- */
 .links a {
-  text-decoration: none; 
+  text-decoration: none;
   color: #ccc;
-  font-size: 0.9rem; 
-  font-weight: 500; 
+  font-size: 0.9rem;
+  font-weight: 500;
   transition: 0.3s;
 }
 
-.links a:hover, .links a.router-link-active {
-  color: white; 
+.links a:hover,
+.links a.router-link-active {
+  color: white;
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
 .apply-btn {
-  border: 1px solid white; 
-  padding: 8px 20px; 
+  border: 1px solid white;
+  padding: 8px 20px;
   border-radius: 20px;
 }
-.apply-btn:hover { 
-  background: white; 
-  color: black !important; 
+
+.apply-btn:hover {
+  background: white;
+  color: black !important;
 }
 
 /* =========================================
    MASAÜSTÜ GÖRÜNÜM (> 1030px)
    ========================================= */
 @media (min-width: 1031px) {
-  .hamburger-btn { display: none !important; }
+  .hamburger-btn {
+    display: none !important;
+  }
 
   .links {
     display: flex !important;
@@ -208,45 +211,54 @@ nav.scrolled {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 30px; 
+    width: 30px;
     height: 22px;
-    background: transparent; 
-    border: none; 
+    background: transparent;
+    border: none;
     cursor: pointer;
-    padding: 0; 
+    padding: 0;
     z-index: 10002;
-    margin-left: 15px; /* Logoya çok yapışmasın */
+    margin-left: 15px;
+    /* Logoya çok yapışmasın */
   }
-  
+
   .hamburger-btn span {
-    width: 100%; 
-    height: 3px; 
+    width: 100%;
+    height: 3px;
     background-color: white;
-    border-radius: 3px; 
+    border-radius: 3px;
     transition: all 0.3s ease;
   }
-  
+
   /* Hamburger Animasyonu */
-  .hamburger-btn.active span:nth-child(1) { transform: translateY(9.5px) rotate(45deg); }
-  .hamburger-btn.active span:nth-child(2) { opacity: 0; }
-  .hamburger-btn.active span:nth-child(3) { transform: translateY(-9.5px) rotate(-45deg); }
+  .hamburger-btn.active span:nth-child(1) {
+    transform: translateY(9.5px) rotate(45deg);
+  }
+
+  .hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-btn.active span:nth-child(3) {
+    transform: translateY(-9.5px) rotate(-45deg);
+  }
 
   /* Menü Perdesi */
   .links {
-    display: flex; 
-    flex-direction: column; 
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: fixed; 
-    top: 0; 
+    position: fixed;
+    top: 0;
     right: 0;
-    height: 100vh; 
+    height: 100vh;
     width: 100%;
     background-color: rgba(5, 5, 5, 0.98);
     backdrop-filter: blur(10px);
     z-index: 10001;
     gap: 30px;
-    transform: translateX(100%); 
+    transform: translateX(100%);
     transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
   }
 
@@ -254,8 +266,17 @@ nav.scrolled {
     transform: translateX(0);
   }
 
-  .links a { font-size: 1.5rem; color: white; margin: 0; }
-  .apply-btn { margin-top: 20px; padding: 15px 40px; font-size: 1.2rem; }
+  .links a {
+    font-size: 1.5rem;
+    color: white;
+    margin: 0;
+  }
+
+  .apply-btn {
+    margin-top: 20px;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+  }
 }
 
 /* =========================================
@@ -263,33 +284,56 @@ nav.scrolled {
    ========================================= */
 @media (max-width: 480px) {
   .nav-content {
-    padding: 0 15px; /* Yan boşlukları azalt */
+    padding: 0 15px;
+    /* Yan boşlukları azalt */
   }
 
   .logo-text {
-    font-size: 1.2rem; /* Logo yazısını küçült */
+    font-size: 1.2rem;
+    /* Logo yazısını küçült */
   }
 
   .nav-logo {
-    height: 32px; /* Logo ikonunu küçült */
+    height: 32px;
+    /* Logo ikonunu küçült */
   }
-  
+
   .logo a {
-    gap: 8px; /* İkon ve yazı arasını daralt */
+    gap: 8px;
+    /* İkon ve yazı arasını daralt */
   }
 }
 
 /* FOOTER */
 footer {
-  background: #000; 
+  background: #000;
   border-top: 1px solid #222;
-  padding: 3rem 1rem; 
-  text-align: center; 
+  padding: 3rem 1rem;
+  text-align: center;
   margin-top: auto;
 }
-.footer-content h3 { font-size: 1.2rem; margin-bottom: 1rem; }
-.footer-content p { color: #666; font-size: 0.9rem; }
-.socials { margin: 1.5rem 0; }
-.socials a { margin: 0 10px; }
-.copyright { margin-top: 2rem; font-size: 0.8rem; color: #444; }
+
+.footer-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-content p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.socials {
+  margin: 1.5rem 0;
+}
+
+.socials a {
+  margin: 0 10px;
+}
+
+.copyright {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: #444;
+}
 </style>

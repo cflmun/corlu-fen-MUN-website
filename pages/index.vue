@@ -51,32 +51,6 @@
       </div>
     </section>
 
-    <!-- LATE APPLICATIONS BANNER -->
-    <section class="late-app-section">
-      <div class="late-app-ripple-bg">
-        <span class="bg-ripple br1"></span>
-        <span class="bg-ripple br2"></span>
-        <span class="bg-ripple br3"></span>
-      </div>
-      <div class="late-app-content">
-        <div class="late-app-left">
-          <span class="late-tag">⏰ LIMITED SPOTS REMAINING</span>
-          <h2 class="late-app-title">LATE APPLICATIONS<br><span>ARE NOW OPEN</span></h2>
-          <p class="late-app-desc">Missed the regular deadline? You still have a chance to be part of CFLMUN'26. Submit your late application before spots run out.</p>
-        </div>
-        <div class="late-app-right">
-          <NuxtLink to="/apply" class="late-app-btn">
-            <span>Apply Now</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </NuxtLink>
-        </div>
-      </div>
-      <div class="late-app-ticker">
-        <span class="ticker-track">LATE APPLICATIONS &nbsp;·&nbsp; CFLMUN'26 &nbsp;·&nbsp; 1–3 MAY 2026 &nbsp;·&nbsp; LIMITED SPOTS &nbsp;·&nbsp; APPLY NOW &nbsp;·&nbsp; LATE APPLICATIONS &nbsp;·&nbsp; CFLMUN'26 &nbsp;·&nbsp; 1–3 MAY 2026 &nbsp;·&nbsp; LIMITED SPOTS &nbsp;·&nbsp; APPLY NOW &nbsp;·&nbsp; LATE APPLICATIONS &nbsp;·&nbsp; CFLMUN'26 &nbsp;·&nbsp; 1–3 MAY 2026 &nbsp;·&nbsp; LIMITED SPOTS &nbsp;·&nbsp; APPLY NOW &nbsp;·&nbsp; LATE APPLICATIONS &nbsp;·&nbsp; CFLMUN'26 &nbsp;·&nbsp; 1–3 MAY 2026 &nbsp;·&nbsp; LIMITED SPOTS &nbsp;·&nbsp; APPLY NOW &nbsp;·&nbsp; LATE APPLICATIONS &nbsp;·&nbsp; CFLMUN'26 &nbsp;·&nbsp; 1–3 MAY 2026 &nbsp;·&nbsp; LIMITED SPOTS &nbsp;·&nbsp; APPLY NOW &nbsp;·&nbsp; LATE APPLICATIONS &nbsp;·&nbsp; CFLMUN'26 &nbsp;·&nbsp; 1–3 MAY 2026 &nbsp;·&nbsp; LIMITED SPOTS &nbsp;·&nbsp; APPLY NOW &nbsp;·&nbsp;</span>
-      </div>
-    </section>
 
     <section class="welcome container">
       <div class="section-header">
